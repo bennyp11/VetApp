@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,11 +10,11 @@
       <h1>Home</h1>
       <nav>
          <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/sign-up">Sign Up</a></li>
-            <li><a href="/sign-in">Sign In</a></li>
-            <li><a href="/book-appointment">Book Appointment</a></li>
-            <li><a href="/appointment-dashboard">View Appointments</a></li>
+            <li><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/sign-up}">Sign Up</a></li>
+            <li><a th:href="@{/sign-in}">Sign In</a></li>
+            <li><a th:href="@{/book-appointment}">Book Appointment</a></li>
+            <li><a th:href="@{/appointments-dashboard}">View Appointments</a></li>
          </ul>
       </nav>
    </header>
@@ -25,7 +25,7 @@
    </main>
 
    <footer>
-      <p>&copy; 2023 Cabby</p>
+      <p>&copy; 2023 Vet Tech</p>
    </footer>
 </body>
 </html>
