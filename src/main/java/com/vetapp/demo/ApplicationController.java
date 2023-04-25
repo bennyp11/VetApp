@@ -30,6 +30,11 @@ public class ApplicationController {
     public String appointmentsDashboard() {
         return "appointments-dashboard";
     }
+    
+    @GetMapping("/appointment-questionnaire")
+    public String appointmentQuestionnaire() {
+        return "appointment-questionnaire";
+    }
 
 }
 
