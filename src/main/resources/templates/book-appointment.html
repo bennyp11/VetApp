@@ -8,14 +8,22 @@
 
 <h1>Book a Vet Appointment</h1>
 
-<form action="#" th:action="@{/submitAppointment}" th:object="${appointment}" method="post">
+<form action="#" th:action="@{/submitAppointment}" th:object="${appointments}" method="post">
     <div>
-        <label for="time">Appointment Time:</label>
-        <input type="datetime-local" id="time" th:field="*{time}" required/>
+        <label for="dateTime">Appointment Time:</label>
+        <input type="datetime-local" id="dateTime" th:field="*{dateTime}" required/>
     </div>
     <div>
-        <label for="place">Appointment Place:</label>
-        <input type="text" id="place" th:field="*{place}" required/>
+        <label for="customer">Customer ID:</label>
+        <input type="number" id="customer" th:field="*{customer.id}" required/>
+    </div>
+    <div>
+        <label for="pets">Pets IDs (comma-separated):</label>
+        <input type="text" id="pets" name="pets" required/>
+    </div>
+    <div>
+        <label for="questionnaires">Questionnaire IDs (comma-separated):</label>
+        <input type="text" id="questionnaires" name="questionnaires" required/>
     </div>
     <button type="submit">Book Appointment</button>
 </form>
