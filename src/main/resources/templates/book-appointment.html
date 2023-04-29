@@ -1,32 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8"/>
+    <meta charset="UTF-8">
     <title>Book Vet Appointment</title>
 </head>
+
 <body>
+    <h1>Book Vet Appointment</h1>
+    <form th:action="@{/book-appointment}" method="post">
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required><br><br>
 
-<h1>Book a Vet Appointment</h1>
+        <label for="time">Time:</label>
+        <input type="time" id="time" name="time" required><br><br>
 
-<form action="#" th:action="@{/submitAppointment}" th:object="${appointments}" method="post">
-    <div>
-        <label for="dateTime">Appointment Time:</label>
-        <input type="datetime-local" id="dateTime" th:field="*{dateTime}" required/>
-    </div>
-    <div>
-        <label for="customer">Customer ID:</label>
-        <input type="number" id="customer" th:field="*{customer.id}" required/>
-    </div>
-    <div>
-        <label for="pets">Pets IDs (comma-separated):</label>
-        <input type="text" id="pets" name="pets" required/>
-    </div>
-    <div>
-        <label for="questionnaires">Questionnaire IDs (comma-separated):</label>
-        <input type="text" id="questionnaires" name="questionnaires" required/>
-    </div>
-    <button type="submit">Book Appointment</button>
-</form>
-
+        <input type="submit" value="Book Appointment">
+    </form>
 </body>
+
 </html>
