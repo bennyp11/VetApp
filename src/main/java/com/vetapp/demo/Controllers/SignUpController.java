@@ -1,20 +1,37 @@
 package com.vetapp.demo.Controllers;
 
-import com.vetapp.demo.Models.Customers;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import com.vetapp.demo.Config.DB;
+import com.vetapp.demo.DAO.SignUpDAO;
 
-@Controller
-@RequestMapping("/sign-up")
 public class SignUpController {
 
-    @GetMapping
-    @ResponseBody
-    public String signUp() {
-        Customers customer = new Customers("John Doe", "johndoe@email.com", "555-555-5555", new String[]{"Fido", "Fluffy"}, "123 Main St", 0);
-        System.out.println(customer.toString());
-        return "Signed up successfully!";
+    private SignUpDAO signUpDAO;
+
+    public SignUpController(DB db) {
+        signUpDAO = new SignUpDAO(db);
+    }
+
+    public boolean registerUser(String username, String email, String password) {
+        // Add necessary input validation and password hashing here before calling signUpDAO.registerUser()
+        return signUpDAO.registerUser(username, email, password);
+    }
+
+    public static void main(String[] args) {
+        DB db = new DB();
+        db.init();
+        SignUpController signUpController = new SignUpController(db);
+
+        // Example usage
+        String username = "JohnDoe";
+        String email = "john.doe@example.com";
+        String password = "password123";
+
+        if (signUpController.registerUser(username, email, password)) {
+            System.out.println("User registration successful!");
+        } else {
+            System.out.println("User registration failed.");
+        }
+
+        db.destroy();
     }
 }
