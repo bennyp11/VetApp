@@ -4,13 +4,38 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@Controller
+import com.vetapp.demo.Config.DB;
+import com.vetapp.demo.DAO.SignInDAO;
+
 public class SignInController {
-  
-  @PostMapping("/sign-in")
-  public void signIn(@RequestParam String username, @RequestParam String password) {
-    System.out.println("Username: " + username + " Password: " + password);
-  }
-  
+
+    private SignInDAO signInDAO;
+
+    public SignInController(DB db) {
+        this.signInDAO = new SignInDAO(db);
+    }
+
+    public boolean authenticateCustomer(String email, String password) {
+        return signInDAO.authenticateCustomer(email, password);
+    }
+
+    public static void main(String[] args) {
+        DB db = new DB();
+        db.init();
+        SignInController signInController = new SignInController(db);
+
+        // Example usage
+        String email = "john.doe@example.com";
+        String password = "password123";
+
+        if (signInController.authenticateCustomer(email, password)) {
+            System.out.println("Customer authentication successful!");
+        } else {
+            System.out.println("Customer authentication failed.");
+        }
+
+        db.destroy();
+    }
 }
+
 
