@@ -2,6 +2,7 @@ package com.vetapp.demo.Controllers;
 
 import com.vetapp.demo.Config.DB;
 import com.vetapp.demo.DAO.SignUpDAO;
+import com.vetapp.demo.Models.Customers;
 
 public class SignUpController {
 
@@ -11,9 +12,8 @@ public class SignUpController {
         signUpDAO = new SignUpDAO(db);
     }
 
-    public boolean registerUser(String username, String email, String password) {
-        // Add necessary input validation and password hashing here before calling signUpDAO.registerUser()
-        return signUpDAO.registerUser(username, email, password);
+    public boolean registerCustomer(Customers customer) {
+        return signUpDAO.registerCustomer(customer);
     }
 
     public static void main(String[] args) {
@@ -22,14 +22,19 @@ public class SignUpController {
         SignUpController signUpController = new SignUpController(db);
 
         // Example usage
-        String username = "JohnDoe";
+        String name = "John Doe";
         String email = "john.doe@example.com";
-        String password = "password123";
+        String phoneNumber = "123-456-7890";
+        String[] petNames = {"Buddy", "Max"};
+        String address = "1234 Elm Street";
+        int visits = 0;
 
-        if (signUpController.registerUser(username, email, password)) {
-            System.out.println("User registration successful!");
+        Customers customer = new Customers(name, email, phoneNumber, petNames, address, visits);
+
+        if (signUpController.registerCustomer(customer)) {
+            System.out.println("Customer registration successful!");
         } else {
-            System.out.println("User registration failed.");
+            System.out.println("Customer registration failed.");
         }
 
         db.destroy();
