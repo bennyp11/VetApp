@@ -1,19 +1,21 @@
 package com.vetapp.demo.DAO;
 
+import com.vetapp.demo.Config.DB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class SignUpDAO {
 
-    private Connection connection;
+    private DB db;
 
-    public SignUpDAO(Connection connection) {
-        this.connection = connection;
+    public SignUpDAO(DB db) {
+        this.db = db;
     }
 
     public boolean registerUser(String username, String email, String password) {
         String query = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
+        Connection connection = db.getConnection();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, username);
