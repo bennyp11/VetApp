@@ -28,8 +28,9 @@ public class SignUpController {
         String[] petNames = {"Buddy", "Max"};
         String address = "1234 Elm Street";
         int visits = 0;
+        String password = "password123";
 
-        Customers customer = new Customers(name, email, phoneNumber, petNames, address, visits);
+        Customers customer = new Customers(name, email, password, phoneNumber, petNames, address, visits);
 
         if (signUpController.registerCustomer(customer)) {
             System.out.println("Customer registration successful!");

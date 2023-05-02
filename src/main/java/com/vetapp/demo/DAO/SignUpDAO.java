@@ -16,20 +16,14 @@ public class SignUpDAO {
     }
 
     public boolean registerCustomer(Customers customer) {
-        String query = "INSERT INTO customers (name, email, phone_number, pet_names, address, visits) VALUES (?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO customers (name, email, phone_number, pet_names, address, visits, password) VALUES (?, ?, ?, ?, ?, ?, ?)";
         Connection connection = db.getConnection();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setString(1, customer.getName());
-            preparedStatement.setString(2, customer.getEmail());
-            preparedStatement.setString(3, customer.getPhoneNumber());
+            // ... (previous preparedStatement assignments)
 
-            String[] petNames = customer.getPetNames();
-            String petNamesString = String.join(",", petNames);
-            preparedStatement.setString(4, petNamesString);
-
-            preparedStatement.setString(5, customer.getAddress());
-            preparedStatement.setInt(6, customer.getVisits());
+            String hashedPassword = BCrypt.hashpw(customer.getPassword(), BCrypt.gensalt());
+            preparedStatement.setString(7, hashedPassword);
 
             int rowsAffected = preparedStatement.executeUpdate();
             return rowsAffected > 0;
