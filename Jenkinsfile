@@ -19,7 +19,7 @@ pipeline {
                 script {
                     // Add the Dockerfile directory in the docker.build command
                     dockerImage = docker.build("vet-app", "-f Dockerfile .")
-                    dockerImage.run("-p 8080:8080")
+                    dockerImage.run("-p 8081:8081")
                 }
             }
         }
