@@ -7,6 +7,17 @@
 </head>
 
 <body>
+
+    <header>
+        <h1>Home</h1>
+        <nav>
+           <ul>
+              <li><a th:href="@{/}">Home</a></li>
+              <li><a th:href="@{/book-appointment}">Book Appointment</a></li>
+              <li><a th:href="@{/appointments-dashboard}">View Appointments</a></li>
+           </ul>
+        </nav>
+     </header>
     <h1>Book Vet Appointment</h1>
     <form th:action="@{/book-appointment}" method="post">
         <label for="date">Date:</label>
@@ -14,6 +25,15 @@
 
         <label for="time">Time:</label>
         <input type="time" id="time" name="time" required><br><br>
+
+        <label for="animal">Animal Name:</label>
+        <input type="animal" id="animal" name="animal" required><br><br>
+
+        <label for="animal-type">Animal Type:</label>
+        <input type="animal-type" id="animal-type" name="animal-type" required><br><br>
+
+        <label for="reason">Reason for Visit:</label>
+        <input type="reason" id="reason" name="reason" required><br><br>
 
         <input type="submit" value="Book Appointment">
     </form>

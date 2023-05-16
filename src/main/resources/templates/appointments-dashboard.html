@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Book Vet Appointment</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+
+    
+</head>
+
+
+
+<body>
+
+    <header>
+        <h1>Home</h1>
+        <nav>
+           <ul>
+              <li><a th:href="@{/}">Home</a></li>
+              <li><a th:href="@{/book-appointment}">Book Appointment</a></li>
+              <li><a th:href="@{/appointments-dashboard}">View Appointments</a></li>
+           </ul>
+        </nav>
+     </header>
+    <h1>Appointment Dashboard</h1>
+    <table>
+        <tr>
+            <th>Date:</th>
+            <td>5/16/2023</td>
+        </tr>
+        <tr>
+            <th>Time:</th>
+            <td>12:00</td>
+        </tr>
+        <tr>
+            <th>Animal Name:</th>
+            <td>Larry</td>
+        </tr>
+        <tr>
+            <th>Animal Type:</th>
+            <td>Goldfish</td>
+        </tr>
+        <tr>
+            <th>Reason for Visit:</th>
+            <td>His personality has changed.</td>
+        </tr>
+    </table>
+</body>
+
+</html>

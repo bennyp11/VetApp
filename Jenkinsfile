@@ -4,7 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'chmod +x ./mvnw'  // Add this line
+                sh 'chmod +x ./mvnw' 
                 sh './mvnw clean package'
             }
         }
@@ -17,7 +17,6 @@ pipeline {
         stage('Docker Build and Run') {
             steps{
                 script {
-                    // Add the Dockerfile directory in the docker.build command
                     dockerImage = docker.build("vet-app", "-f Dockerfile .")
                     dockerImage.run("-p 8081:8081")
                 }
