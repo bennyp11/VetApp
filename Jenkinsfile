@@ -18,7 +18,7 @@ pipeline {
             steps{
                 script {
                     dockerImage = docker.build("vet-app", "-f Dockerfile .")
-                    dockerImage.run("-p 8081:8081")
+                    dockerImage.run("-p 8082:8082")
                 }
             }
         }
